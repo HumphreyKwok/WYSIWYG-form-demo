@@ -17,11 +17,11 @@ This is a WYSIWYG form platform.
 
 2. create an usable form [ x ]
 
-3. add frontend validation to the form [ ]
+3. add frontend validation to the form [ x ]
 
 4. add server action to handle the submitted form data [ x ]
 
-5. add backend validation for server actions [ ]
+5. add backend validation for server actions [ x ]
 
 6. add a toastify component to notify the user when the form is sucessfully submitted [ ]
 

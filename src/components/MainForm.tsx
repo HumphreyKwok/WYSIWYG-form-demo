@@ -17,6 +17,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { mainFormSchema } from "@/lib/zodSchema";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { mainFormAction } from "@/actions/mainFormActions";
 
 const MainForm = () => {
   const form = useForm<z.infer<typeof mainFormSchema>>({
@@ -28,8 +29,10 @@ const MainForm = () => {
     },
   });
 
-  const handleSubmit = (values: z.infer<typeof mainFormSchema>) => {
-    console.log(values);
+  const handleSubmit = async (values: z.infer<typeof mainFormSchema>) => {
+    const result = await mainFormAction(values);
+
+    console.log(result);
   };
 
   return (
