@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is a WYSIWYG form platform.
 
-## Getting Started
+---
 
-First, run the development server:
+### todo
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+0. install and setup necessary dependencies:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- shadcn/ui [ x ]
+- next-theme [ x ]
+- next-auth [ x ]
+- prisma [ x ]
+- nodeMailer [ x ]
+- create dockerCompose files for database [ x ]
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. add darkmode [ ]
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. create an usable form [ ]
 
-## Learn More
+3. add frontend validation to the form [ ]
 
-To learn more about Next.js, take a look at the following resources:
+4. add server action to handle the submitted form data [ ]
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. add backend validation for server actions [ ]
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+6. add a toastify component to notify the user when the form is sucessfully submitted [ ]
 
-## Deploy on Vercel
+7. add a mail sending feature to handle the submitted data [ ]
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+8. add route for the editing panel [ ]
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+9. add authentication functions to the protected route [ ]
+
+10. add the WYSIWYG panel [ ]
+
+11. containerise the app and upload it to github [ ]
+
+12. create relevant yaml files and run them on Google Cloud [ ]
+
+13. create github actions to build and update containers automatically [ ]
+
+14. add checkbox field types [ ]
+
+15. add ratio field types [ ]
+
+16. add datepicker field types [ ]
+
+17. add drag-and-drop features to change the sequence of the fields [ ]
