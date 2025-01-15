@@ -2,6 +2,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "@/components/ThemeToggle";
+import MainForm from "@/components/MainForm";
 
 export default function Home() {
   return (
@@ -9,11 +10,10 @@ export default function Home() {
       <main className="flex flex-1 flex-col items-center justify-center">
         <Card>
           <CardHeader>
-            <CardHeader>My Form</CardHeader>
+            <CardHeader>Welcome</CardHeader>
           </CardHeader>
           <CardContent className="flex flex-col gap-4">
-            <Input />
-            <Button>Submit</Button>
+            <MainForm />
           </CardContent>
         </Card>
       </main>

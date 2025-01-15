@@ -13,9 +13,9 @@ This is a WYSIWYG form platform.
 - nodeMailer [ x ]
 - create dockerCompose files for database [ x ]
 
-1. add darkmode [ ]
+1. add darkmode [ x ]
 
-2. create an usable form [ ]
+2. create an usable form [ x ]
 
 3. add frontend validation to the form [ ]
 
