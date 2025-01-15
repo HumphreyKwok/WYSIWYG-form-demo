@@ -39,7 +39,7 @@ const MainForm = () => {
     if (result.status === 200) {
       toast({
         title: "Form Submission Success",
-        description: "All Clear",
+        description: "All clear, email confirmation sent",
       });
       form.reset();
     }
@@ -48,6 +48,15 @@ const MainForm = () => {
       toast({
         title: "Form Submission Failed",
         description: "Failed to validate the form data at server side",
+        variant: "destructive",
+      });
+    }
+
+    if (result.status === 500) {
+      toast({
+        title: "Email Confirmation Failed",
+        description:
+          "We tried to send you an email confirmation, but something went wrong",
         variant: "destructive",
       });
     }

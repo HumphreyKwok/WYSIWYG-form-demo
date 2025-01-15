@@ -25,24 +25,26 @@ This is a WYSIWYG form platform.
 
 6. add a toastify component to notify the user when the form is sucessfully submitted [ x ]
 
-7. add a mail sending feature to handle the submitted data [ ]
+7. add a mail sending feature to handle the submitted data [ x ]
 
-8. add route for the editing panel [ ]
+8. add a pending state while the form is submitting [ ]
 
-9. add authentication functions to the protected route [ ]
+9. add route for the editing panel [ ]
 
-10. add the WYSIWYG panel [ ]
+10. add authentication functions to the protected route [ ]
 
-11. containerise the app and upload it to github [ ]
+11. add the WYSIWYG panel [ ]
 
-12. create relevant yaml files and run them on Google Cloud [ ]
+12. containerise the app and upload it to github [ ]
 
-13. create github actions to build and update containers automatically [ ]
+13. create relevant yaml files and run them on Google Cloud [ ]
 
-14. add checkbox field types [ ]
+14. create github actions to build and update containers automatically [ ]
 
-15. add ratio field types [ ]
+15. add checkbox field types [ ]
 
-16. add datepicker field types [ ]
+16. add ratio field types [ ]
 
-17. add drag-and-drop features to change the sequence of the fields [ ]
+17. add datepicker field types [ ]
+
+18. add drag-and-drop features to change the sequence of the fields [ ]
