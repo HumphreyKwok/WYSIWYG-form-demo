@@ -19,7 +19,7 @@ This is a WYSIWYG form platform.
 
 3. add frontend validation to the form [ ]
 
-4. add server action to handle the submitted form data [ ]
+4. add server action to handle the submitted form data [ x ]
 
 5. add backend validation for server actions [ ]
 

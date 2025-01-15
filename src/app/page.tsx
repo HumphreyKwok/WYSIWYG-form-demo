@@ -7,8 +7,8 @@ import MainForm from "@/components/MainForm";
 export default function Home() {
   return (
     <>
-      <main className="flex flex-1 flex-col items-center justify-center">
-        <Card>
+      <main className="container flex flex-1 flex-col items-center justify-center">
+        <Card className="w-1/2">
           <CardHeader>
             <CardHeader>Welcome</CardHeader>
           </CardHeader>
