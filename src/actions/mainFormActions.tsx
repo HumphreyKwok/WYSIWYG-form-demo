@@ -1,9 +1,8 @@
 "use server";
 
 import { mainFormSchema } from "@/lib/zodSchema";
-import { z } from "zod";
 
-export const mainFormAction = async (data: z.infer<typeof mainFormSchema>) => {
+export const mainFormAction = async (data: unknown) => {
   const dataValidation = mainFormSchema.safeParse(data);
 
   if (dataValidation.error) {

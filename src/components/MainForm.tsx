@@ -19,6 +19,8 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { mainFormAction } from "@/actions/mainFormActions";
 
+import { useToast } from "@/hooks/use-toast";
+
 const MainForm = () => {
   const form = useForm<z.infer<typeof mainFormSchema>>({
     resolver: zodResolver(mainFormSchema),
@@ -29,10 +31,26 @@ const MainForm = () => {
     },
   });
 
+  const { toast } = useToast();
+
   const handleSubmit = async (values: z.infer<typeof mainFormSchema>) => {
     const result = await mainFormAction(values);
 
-    console.log(result);
+    if (result.status === 200) {
+      toast({
+        title: "Form Submission Success",
+        description: "All Clear",
+      });
+      form.reset();
+    }
+
+    if (result.status === 400) {
+      toast({
+        title: "Form Submission Failed",
+        description: "Failed to validate the form data at server side",
+        variant: "destructive",
+      });
+    }
   };
 
   return (

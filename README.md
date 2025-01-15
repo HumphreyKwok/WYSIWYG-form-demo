@@ -23,7 +23,7 @@ This is a WYSIWYG form platform.
 
 5. add backend validation for server actions [ x ]
 
-6. add a toastify component to notify the user when the form is sucessfully submitted [ ]
+6. add a toastify component to notify the user when the form is sucessfully submitted [ x ]
 
 7. add a mail sending feature to handle the submitted data [ ]
 
