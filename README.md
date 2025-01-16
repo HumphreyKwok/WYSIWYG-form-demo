@@ -31,7 +31,7 @@ This is a WYSIWYG form platform.
 
 9. add route for the editing panel [ x ]
 
-10. add authentication functions to the protected route [ ]
+10. add authentication functions to the protected route [ x ]
 
 11. add the WYSIWYG panel [ ]
 
