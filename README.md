@@ -33,7 +33,14 @@ This is a WYSIWYG form platform.
 
 10. add authentication functions to the protected route [ x ]
 
-11. add the WYSIWYG panel [ ]
+11. add the WYSIWYG panel:
+
+- create form and field model in prisma schema [ ]
+- read and display froms at the preview section [ ]
+- add a create button at the edit section to create form field [ ]
+- add an update button at the edit section to update form field [ ]
+- add a delete button at the edit section to delete form field [ ]
+- generate new zod according to the current form fields [ ]
 
 12. containerise the app and upload it to github [ ]
 
