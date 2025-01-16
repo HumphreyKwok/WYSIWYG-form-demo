@@ -29,7 +29,7 @@ This is a WYSIWYG form platform.
 
 8. split the form submission toast and email notification toast for better use experience[ x ]
 
-9. add route for the editing panel [ ]
+9. add route for the editing panel [ x ]
 
 10. add authentication functions to the protected route [ ]
 
