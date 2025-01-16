@@ -1,6 +1,4 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import ThemeToggle from "@/components/ThemeToggle";
 import MainForm from "@/components/MainForm";
 
@@ -10,7 +8,7 @@ export default function Home() {
       <main className="container flex flex-1 flex-col items-center justify-center">
         <Card className="w-1/2">
           <CardHeader>
-            <CardHeader>Welcome</CardHeader>
+            <CardTitle>Welcome</CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col gap-4">
             <MainForm />

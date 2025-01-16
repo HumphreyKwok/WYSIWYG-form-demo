@@ -5,7 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "WYSIWYG Form",
-  description: "From submission platform, with a GUI form editor",
+  description: "Form submission platform, with a GUI form editor",
 };
 
 export default function RootLayout({

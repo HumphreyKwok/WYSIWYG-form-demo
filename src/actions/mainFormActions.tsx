@@ -19,12 +19,7 @@ export const mainFormAction = async (data: unknown) => {
     return { status: 400, message: "data validation failed" };
   }
 
-  try {
-    await sendUserConfirmation(dataValidation.data.contact);
-    return { status: 200, message: "email sent" };
-  } catch (error) {
-    return { status: 500, message: "email failed to deliver" };
-  }
+  return { status: 200, data: dataValidation.data };
 };
 
 export const sendUserConfirmation = async (recipient: string) => {
@@ -52,11 +47,13 @@ export const sendUserConfirmation = async (recipient: string) => {
 
     const result = await transport.sendMail(mailOptions);
 
-    console.log(result);
+    if (result.accepted.includes(recipient)) {
+      return { status: 200, message: "confirmation email delivered" };
+    }
 
-    return result;
+    return { status: 400, message: "confirmation email failed delivered" };
   } catch (error) {
     console.log(`failed to send email to ${recipient}, error: ${error}`);
-    throw error;
+    return { status: 500, message: "confirmation email failed delivered" };
   }
 };

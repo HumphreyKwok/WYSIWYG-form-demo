@@ -27,7 +27,7 @@ This is a WYSIWYG form platform.
 
 7. add a mail sending feature to handle the submitted data [ x ]
 
-8. add a pending state while the form is submitting [ ]
+8. split the form submission toast and email notification toast for better use experience[ x ]
 
 9. add route for the editing panel [ ]
 

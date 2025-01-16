@@ -17,7 +17,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { mainFormSchema } from "@/lib/zodSchema";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { mainFormAction } from "@/actions/mainFormActions";
+import {
+  mainFormAction,
+  sendUserConfirmation,
+} from "@/actions/mainFormActions";
 
 import { useToast } from "@/hooks/use-toast";
 
@@ -34,29 +37,40 @@ const MainForm = () => {
   const { toast } = useToast();
 
   const handleSubmit = async (values: z.infer<typeof mainFormSchema>) => {
-    const result = await mainFormAction(values);
+    const backendValidation = await mainFormAction(values);
 
-    if (result.status === 200) {
+    if (backendValidation.status === 200) {
       toast({
         title: "Form Submission Success",
-        description: "All clear, email confirmation sent",
+        description: "Sending email confirmation...",
       });
       form.reset();
-    }
 
-    if (result.status === 400) {
-      toast({
-        title: "Form Submission Failed",
-        description: "Failed to validate the form data at server side",
-        variant: "destructive",
-      });
-    }
+      const emailConfirmationResult = await sendUserConfirmation(
+        backendValidation.data!.contact as string,
+      );
 
-    if (result.status === 500) {
+      if ((emailConfirmationResult.status = 200)) {
+        toast({
+          title: "Confirmation Email Sent",
+          description: "All clear",
+        });
+
+        return;
+      }
+
       toast({
         title: "Email Confirmation Failed",
         description:
           "We tried to send you an email confirmation, but something went wrong",
+        variant: "destructive",
+      });
+    }
+
+    if (backendValidation.status === 400) {
+      toast({
+        title: "Form Submission Failed",
+        description: "Failed to validate the form data at server side",
         variant: "destructive",
       });
     }
