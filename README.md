@@ -35,7 +35,7 @@ This is a WYSIWYG form platform.
 
 11. add the WYSIWYG panel:
 
-- create form and field model in prisma schema [ ]
+- create form and field model in prisma schema [ x ]
 - read and display froms at the preview section [ ]
 - add a create button at the edit section to create form field [ ]
 - add an update button at the edit section to update form field [ ]
