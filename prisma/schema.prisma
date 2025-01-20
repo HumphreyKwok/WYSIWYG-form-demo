@@ -15,21 +15,31 @@ datasource db {
 
 model Form {
   id          Int     @id @default(autoincrement())
+  name        String
   description String?
   fields      Field[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Field {
-  id        String   @id @default(cuid())
-  type      Type     @default(Input)
-  label     String?
-  options   String[]
-  required  Boolean  @default(false)
-  minLength Int?     @default(1)
-  maxLength Int?     @default(200)
+  id          String   @id @default(cuid())
+  type        Type     @default(Input)
+  name        String
+  label       String
+  description String?
+  placeholder String   @default("Input here...")
+  options     String[]
+  required    Boolean  @default(false)
+  minLength   Int?     @default(1)
+  maxLength   Int?     @default(200)
 
   formId Int
   form   Form @relation(fields: [formId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 enum Type {
@@ -37,6 +47,6 @@ enum Type {
   Email
   Textarea
   Checkbox
-  Ratio
+  Radio
   DatePicker
 }
