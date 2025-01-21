@@ -1,6 +1,6 @@
 import prisma from "@/lib/db";
 
-export const getForm = async () => {
+export const getDefaultForm = async () => {
   const form = await prisma.form.findFirst({
     where: { name: "default form" },
     include: { fields: true },
