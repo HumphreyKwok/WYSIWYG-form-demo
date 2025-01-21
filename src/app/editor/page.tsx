@@ -5,10 +5,10 @@ import { getDefaultForm } from "@/lib/getForm";
 
 const Editor = async () => {
   const session = await auth();
-  const formSchema = await getDefaultForm();
+  const formInfo = await getDefaultForm();
 
   return session && session.user ? (
-    <EditingPanel formSchema={formSchema} />
+    <EditingPanel formInfo={formInfo} />
   ) : (
     <SignInForm />
   );

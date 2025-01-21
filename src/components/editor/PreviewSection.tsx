@@ -1,6 +1,7 @@
 "use client";
 
 import { TFormSchema } from "@/types/formSchema";
+
 import {
   Form,
   FormControl,
@@ -8,18 +9,25 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
 } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 
-const PreviewSection = ({ formSchema }: TFormSchema) => {
-  let defaultValues: { [key: string]: string } = {};
-  formSchema.fields.forEach((field) => (defaultValues[field.name] = ""));
+const PreviewSection = ({
+  formInfo,
+  setActiveFieldId,
+}: {
+  formInfo: TFormSchema;
+  setActiveFieldId: React.Dispatch<React.SetStateAction<string | null>>;
+}) => {
+  const defaultValues: { [key: string]: string } = {};
+  formInfo.fields.forEach((field) => (defaultValues[field.name] = ""));
 
   const form = useForm({
     defaultValues,
   });
+
+  const handleFieldClick = (fieldId: string) => setActiveFieldId(fieldId);
 
   return (
     <section className="flex h-[90%] flex-1 flex-col items-center text-2xl">
@@ -29,26 +37,30 @@ const PreviewSection = ({ formSchema }: TFormSchema) => {
 
           <div className="flex items-center gap-1 text-primary-foreground/80">
             <h2 className="text-base first-letter:uppercase">
-              {formSchema.name}:
+              {formInfo.name}:
             </h2>
-            <small className="text-sm">{formSchema.description}</small>
+            <small className="text-sm">{formInfo.description}</small>
           </div>
 
-          {formSchema.fields.map((formField) => (
-            <FormField
+          {formInfo.fields.map((formField) => (
+            <div
+              onClick={() => handleFieldClick(formField.id)}
               key={formField.id}
-              control={form.control}
-              name={formField.name}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>{formField.label}</FormLabel>
-                  <FormControl>
-                    <Input placeholder={formField.placeholder} {...field} />
-                  </FormControl>
-                  <FormDescription>{formField.description}</FormDescription>
-                </FormItem>
-              )}
-            />
+            >
+              <FormField
+                control={form.control}
+                name={formField.name}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{formField.label}</FormLabel>
+                    <FormControl>
+                      <Input placeholder={formField.placeholder} {...field} />
+                    </FormControl>
+                    <FormDescription>{formField.description}</FormDescription>
+                  </FormItem>
+                )}
+              />
+            </div>
           ))}
         </form>
       </Form>
