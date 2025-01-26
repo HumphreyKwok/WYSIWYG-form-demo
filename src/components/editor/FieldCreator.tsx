@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { TFormSchema } from "@/types/formSchema";
-import { randomUUID } from "crypto";
 
 const FieldCreator = ({
   updateFormInfo,

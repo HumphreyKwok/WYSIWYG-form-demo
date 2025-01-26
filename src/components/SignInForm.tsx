@@ -17,7 +17,7 @@ import { Card, CardContent, CardTitle } from "./ui/card";
 import { SignInWith } from "@/actions/authActions";
 
 const SignInForm = () => {
-  const [providers, setProviders] = useState<Record<string, any> | null>(null);
+  const [providers, setProviders] = useState<any | null>(null);
 
   useEffect(() => {
     const fetchProviders = async () => {

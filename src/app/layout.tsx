@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import ThemeToggle from "@/components/ThemeToggle";
+import Navigation from "@/components/Navigation";
 
 export const metadata: Metadata = {
   title: "WYSIWYG Form",
@@ -20,6 +21,7 @@ export default function RootLayout({
         <ThemeProvider>
           {children}
           <footer className="fixed bottom-8 right-8">
+            <Navigation />
             <ThemeToggle />
           </footer>
         </ThemeProvider>

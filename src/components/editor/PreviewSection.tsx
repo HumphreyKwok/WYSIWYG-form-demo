@@ -35,7 +35,7 @@ const PreviewSection = ({
         <form className="flex w-full flex-col gap-4 p-5">
           <h1 className="text-2xl">Preview</h1>
 
-          <div className="flex items-center gap-1 text-primary-foreground/80">
+          <div className="flex items-center gap-1 text-primary">
             <h2 className="text-base first-letter:uppercase">
               {formInfo.name}:
             </h2>

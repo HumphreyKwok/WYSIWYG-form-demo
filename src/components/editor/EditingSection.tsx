@@ -16,7 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import SignOutButtuon from "@/components/SignOutButton";
+// import SignOutButtuon from "@/components/SignOutButton";
 import { TFormSchema } from "@/types/formSchema";
 
 const EditionSection = ({
@@ -66,7 +66,7 @@ const EditionSection = ({
     <section className="flex h-[90%] w-1/4 flex-col gap-2 p-2">
       <header className="flex h-10 items-center justify-between">
         <p>Welcome</p>
-        <SignOutButtuon />
+        {/* <SignOutButtuon /> */}
       </header>
       <div className="flex h-full w-full flex-1 items-center justify-center text-2xl">
         <Accordion type="single" collapsible className="h-full w-full">

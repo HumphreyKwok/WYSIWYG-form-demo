@@ -1,19 +1,19 @@
 import EditingPanel from "@/components/EditingPanel";
-import SignInForm from "@/components/SignInForm";
-import { auth } from "@/lib/authConfig";
+// import SignInForm from "@/components/SignInForm";
+// import { auth } from "@/lib/authConfig";
 import { getDefaultForm } from "@/lib/getForm";
 
 const Editor = async () => {
-  const session = await auth();
+  // const session = await auth();
   const formInfo = await getDefaultForm();
 
-  console.log(formInfo);
+  return <EditingPanel formInfo={formInfo} />;
 
-  return session && session.user ? (
-    <EditingPanel formInfo={formInfo} />
-  ) : (
-    <SignInForm />
-  );
+  // return session && session.user ? (
+  //   <EditingPanel formInfo={formInfo} />
+  // ) : (
+  //   <SignInForm />
+  // );
 };
 
 export default Editor;
