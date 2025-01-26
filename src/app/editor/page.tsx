@@ -7,6 +7,8 @@ const Editor = async () => {
   const session = await auth();
   const formInfo = await getDefaultForm();
 
+  console.log(formInfo);
+
   return session && session.user ? (
     <EditingPanel formInfo={formInfo} />
   ) : (

@@ -1,5 +1,6 @@
-"use client";
+import FieldCreator from "@/components/editor/FieldCreator";
 
+import { useEffect, useRef, useState } from "react";
 import {
   Accordion,
   AccordionItem,
@@ -14,60 +15,52 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
+import { Button } from "@/components/ui/button";
 import SignOutButtuon from "@/components/SignOutButton";
-import { useEffect, useRef, useState } from "react";
-
 import { TFormSchema } from "@/types/formSchema";
 
 const EditionSection = ({
   formInfo,
   activeFieldId,
+  updateFormInfo,
 }: {
   formInfo: TFormSchema;
   activeFieldId: string | null;
+  updateFormInfo: React.Dispatch<React.SetStateAction<TFormSchema>>;
 }) => {
-  const editTiggerRef = useRef<HTMLButtonElement | null>(null);
-
+  const editTriggerRef = useRef<HTMLButtonElement | null>(null);
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [activeFieldInfo, setActiveFieldInfo] = useState(formInfo.fields[0]);
-
-  const [fieldName, setFieldName] = useState(activeFieldInfo.label);
-  const [fieldType, setFieldType] = useState(activeFieldInfo.type);
-  const [fieldDescription, setFieldDescription] = useState(
-    activeFieldInfo.description,
-  );
-  const [fieldPlaceholder, setFieldPlaceholder] = useState(
-    activeFieldInfo.placeholder,
-  );
+  const [editingField, setEditingField] = useState(formInfo.fields[0]);
 
   useEffect(() => {
     if (activeFieldId) {
-      const newActiveFieldInfo = formInfo.fields.filter(
-        (field) => field.id === activeFieldId,
-      )[0];
-
-      setActiveFieldInfo(
-        formInfo.fields.filter((field) => field.id === activeFieldId)[0],
-      );
-
-      setFieldName(newActiveFieldInfo.label);
-      setFieldType(newActiveFieldInfo.type);
-      setFieldDescription(newActiveFieldInfo.description);
-      setFieldPlaceholder(newActiveFieldInfo.placeholder);
+      const field = formInfo.fields.find((field) => field.id === activeFieldId);
+      if (field) {
+        setEditingField(field);
+      }
     }
 
-    if (isOpen) {
-      return;
-    }
-
-    if (editTiggerRef.current && activeFieldId) {
-      editTiggerRef.current.click();
+    if (!isOpen && editTriggerRef.current && activeFieldId) {
+      editTriggerRef.current.click();
       setIsOpen(true);
     }
-  }, [activeFieldId]);
+  }, [activeFieldId, formInfo.fields]);
 
-  console.log(fieldType);
+  const handleInputChange = (key: keyof typeof editingField, value: string) => {
+    setEditingField((prev) => ({
+      ...prev,
+      [key]: value,
+    }));
+  };
+
+  const handleUpdate = () => {
+    updateFormInfo((prev) => ({
+      ...prev,
+      fields: prev.fields.map((field) =>
+        field.id === editingField.id ? editingField : field,
+      ),
+    }));
+  };
 
   return (
     <section className="flex h-[90%] w-1/4 flex-col gap-2 p-2">
@@ -84,27 +77,30 @@ const EditionSection = ({
             }}
           >
             <AccordionTrigger>Create a new field...</AccordionTrigger>
-            <AccordionContent>Create placeholder...</AccordionContent>
+            <AccordionContent>
+              <FieldCreator updateFormInfo={updateFormInfo} />
+            </AccordionContent>
           </AccordionItem>
           <AccordionItem value="edit">
             <AccordionTrigger
-              ref={editTiggerRef}
-              onClick={() => {
-                isOpen ? setIsOpen(false) : setIsOpen(true);
-              }}
+              ref={editTriggerRef}
+              onClick={() => setIsOpen(!isOpen)}
             >
               Edit a existing field...
             </AccordionTrigger>
             <AccordionContent>
-              <div className="flex flex-col gap-2 p-1">
+              <div className="flex flex-col gap-3 p-1">
                 <p>Field Name:</p>
                 <Input
                   placeholder="field name..."
-                  value={fieldName}
-                  onChange={(event) => setFieldName(event.target.value)}
+                  value={editingField.label}
+                  onChange={(e) => handleInputChange("label", e.target.value)}
                 />
                 <p>Field Type:</p>
-                <Select defaultValue={fieldType}>
+                <Select
+                  value={editingField.type}
+                  onValueChange={(value) => handleInputChange("type", value)}
+                >
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>
@@ -121,15 +117,20 @@ const EditionSection = ({
                 <p>Field Description:</p>
                 <Input
                   placeholder="field description..."
-                  value={fieldDescription || ""}
-                  onChange={(event) => setFieldDescription(event.target.value)}
+                  value={editingField.description || ""}
+                  onChange={(e) =>
+                    handleInputChange("description", e.target.value)
+                  }
                 />
                 <p>Field Placeholder:</p>
                 <Input
                   placeholder="field placeholder"
-                  value={fieldPlaceholder}
-                  onChange={(event) => setFieldPlaceholder(event.target.value)}
+                  value={editingField.placeholder}
+                  onChange={(e) =>
+                    handleInputChange("placeholder", e.target.value)
+                  }
                 />
+                <Button onClick={handleUpdate}>Update</Button>
               </div>
             </AccordionContent>
           </AccordionItem>

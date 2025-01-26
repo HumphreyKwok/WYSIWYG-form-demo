@@ -1,22 +1,22 @@
 export type TFormSchema = {
-  fields: {
-    id: string;
-    description: string | null;
-    createdAt: Date;
-    updatedAt: Date;
-    name: string;
-    type: "Input" | "Email" | "Textarea" | "Checkbox" | "Radio" | "DatePicker";
-    label: string;
-    placeholder: string;
-    options: string[];
-    required: boolean;
-    minLength: number | null;
-    maxLength: number | null;
-    formId: number;
-  }[];
   id: number;
   name: string;
   description: string | null;
-  createdAt: Date;
-  updatedAt: Date;
+  fields: {
+    id: string;
+    name: string;
+    label: string;
+    placeholder: string;
+    description: string | null;
+    type: "Input" | "Email" | "Textarea" | "Checkbox" | "Radio" | "DatePicker";
+    // options: string[];
+    // required: boolean;
+    // minLength: number | null;
+    // maxLength: number | null;
+    // formId: number;
+    // createdAt: Date;
+    // updatedAt: Date;
+  }[];
+  // createdAt: Date;
+  // updatedAt: Date;
 };

@@ -3,7 +3,22 @@ import prisma from "@/lib/db";
 export const getDefaultForm = async () => {
   const form = await prisma.form.findFirst({
     where: { name: "default form" },
-    include: { fields: true },
+    include: {
+      fields: {
+        select: {
+          id: true,
+          name: true,
+          label: true,
+          placeholder: true,
+          description: true,
+          type: true,
+        },
+      },
+    },
+    omit: {
+      createdAt: true,
+      updatedAt: true,
+    },
   });
 
   //Check if there is at least one form in the table,
