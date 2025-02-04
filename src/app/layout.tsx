@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
 import ThemeToggle from "@/components/ThemeToggle";
 import Navigation from "@/components/Navigation";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "WYSIWYG Form",
@@ -26,6 +27,7 @@ export default function RootLayout({
           </footer>
         </ThemeProvider>
         <Toaster />
+        <Analytics />
       </body>
     </html>
   );

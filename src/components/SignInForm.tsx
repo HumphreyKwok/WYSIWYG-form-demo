@@ -11,13 +11,19 @@
 "use client";
 
 import LoadingButton from "@/components/ui/loadingButton";
-import { getProviders } from "next-auth/react";
+import { getProviders, LiteralUnion } from "next-auth/react";
 import { useState, useEffect } from "react";
 import { Card, CardContent, CardTitle } from "./ui/card";
 import { SignInWith } from "@/actions/authActions";
+import type { BuiltInProviderType } from "@auth/core/providers";
 
 const SignInForm = () => {
-  const [providers, setProviders] = useState<any | null>(null);
+  const [providers, setProviders] = useState<ProvidersType | null>(null);
+
+  type ProvidersType = Record<
+    LiteralUnion<BuiltInProviderType>,
+    any //ClientSafeProvider, not being exported
+  >;
 
   useEffect(() => {
     const fetchProviders = async () => {
